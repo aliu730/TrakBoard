@@ -1,0 +1,35 @@
+{
+  "name": "trakboardpackage",
+  "version": "1.0.0",
+  "description": "tools needed to run trakboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliu730/TrakBoard.git"
+  },
+  "author": "Andrew Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliu730/TrakBoard/issues"
+  },
+  "homepage": "https://github.com/aliu730/TrakBoard#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^1.18.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
