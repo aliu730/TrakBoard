@@ -13,6 +13,7 @@ class PlayerSelect extends React.Component {
           <option>Eric Chung</option>
           <option>Lam Hoang</option>
           <option>yticixoT</option>
+          <option>player1</option>
         </select>
         <button id="addPlayer">+</button>
       </div>
