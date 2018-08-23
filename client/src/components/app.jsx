@@ -57,6 +57,9 @@ class App extends React.Component {
           <input onChange={this.getDate} type="date" />
           <GameSelect getGame={this.getGame} />
           <PlayerSelect getName={this.getName} />
+          <div>
+            Testing Contributes
+          </div>
           <button id="submit">Submit</button>
           <button onClick={this.enterEntry} id="showStats">Cancel</button>
         </div>
