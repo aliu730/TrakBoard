@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   entry: './client/src/index.js',
   output: {
-    path: path.join(__dirname, './dist/public'),
+    path: path.join(__dirname, './public'),
     filename: 'trakBundle.js'
   },
   devtool: 'inline-source-map',
@@ -20,19 +20,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              camelCase: true,
-              sourceMap: true
-            }
-          }
-        ]
+        use: [ 'style-loader', 'css-loader' ]
       }
     ]
   }

@@ -6,8 +6,10 @@ class PlayerSelect extends React.Component {
   }
   render() {
     return (
-      <div>
-        <select onChange={this.props.getName} id="playerSelect">
+      <div className="playerSelector">
+        Select Players:&nbsp;
+        <select onChange={this.props.getName} id="playerSelect" defaultValue="notselected">
+          <option value="notselected">Select Player</option>
           <option>Andrew Liu</option>
           <option>Sandro Yu</option>
           <option>Eric Chung</option>
@@ -15,7 +17,7 @@ class PlayerSelect extends React.Component {
           <option>yticixoT</option>
           <option>player1</option>
         </select>
-        <button id="addPlayer">+</button>
+        <button onClick={this.props.addPlayer} className="addPlayer">+</button>
       </div>
     );
   };

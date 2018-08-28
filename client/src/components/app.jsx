@@ -16,12 +16,17 @@ class App extends React.Component {
     this.getDate = this.getDate.bind(this);
     this.getGame = this.getGame.bind(this);
     this.getName = this.getName.bind(this);
+    this.addPlayer = this.addPlayer.bind(this);
   }
 
   enterEntry() {
     const { displayStats } = this.state;
     this.setState({
       displayStats: !displayStats,
+      date: "",
+      game: "",
+      players: [],
+      currPlayerToAdd: "",
     });
   }
 
@@ -43,25 +48,46 @@ class App extends React.Component {
     });
   }
 
+  addPlayer() {
+    const { players, currPlayerToAdd } = this.state;
+    const newList = players;
+    if (!players.includes(currPlayerToAdd) && currPlayerToAdd !== "" && currPlayerToAdd !== "notselected") {
+      newList.push(currPlayerToAdd);
+      this.setState({
+        players: newList,
+      });
+    }
+  }
+
   render() {
-    const { displayStats } = this.state;
+    const { displayStats, players } = this.state;
     if (displayStats) {
       return (
         <div>
-          <button onClick={this.enterEntry} id="addSess">Add Entry</button>
+          <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
+          <div className="overHead" >TrakBoard</div>
+          <button onClick={this.enterEntry} className="addSess">Add Entry</button>
         </div>
       );
     } else if (!displayStats) {
       return (
         <div>
-          <input onChange={this.getDate} type="date" />
-          <GameSelect getGame={this.getGame} />
-          <PlayerSelect getName={this.getName} />
-          <div>
-            Testing Contributes
+          <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
+          <div className="register" >
+            <div className="headBoard">New Entry</div>
+            <input className="dateSelect" onChange={ this.getDate } type="date" />
+            <GameSelect getGame={ this.getGame } />
+            <PlayerSelect className="playerSelector" addPlayer={ this.addPlayer } getName={ this.getName } />
+            <div className="currPlayers">
+              Current Players:
+              {players.map((el, i) => {
+                return <span className="names" key={ i }>{ el }</span>
+              }
+            )}
+            </div>
+            <button className="submit">Submit</button>
+            <button onClick={this.enterEntry} className="showStats">Cancel</button>
           </div>
-          <button id="submit">Submit</button>
-          <button onClick={this.enterEntry} id="showStats">Cancel</button>
         </div>
       )
     }

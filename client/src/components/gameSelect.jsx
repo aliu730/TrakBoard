@@ -9,8 +9,9 @@ class GameSelect extends React.Component {
   }
   render() {
     return (
-      <div>
-        <select onChange={this.props.getGame} id="gameSelect" defaultValue="notselected">
+      <div className="gameSelector">
+      Select Game:&nbsp;
+        <select onChange={this.props.getGame} className="gameSelect" defaultValue="notselected">
           <option value="Monopoly">Monopoly</option>
           <option value="Sorry">Sorry</option>
           <option value="Life">Life</option>
