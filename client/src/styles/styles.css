@@ -1,3 +1,7 @@
+.addForm {
+  line-height: 23px;
+}
+
 .addPlayer {
   margin: 5px;
   padding: 4px;
@@ -42,12 +46,12 @@
   margin: 2px 2px 2px 2px;
   padding: 5px;
 }
-.currPlayers, .dateSelect, .gameSelector, .playerSelector, .submit, .showStats {
+.currPlayers, .dateSelect, .gameSelector, .playerSelector, .submit, .showStats, .newPlayer {
   background-color: rgb(228, 240, 250);
   border: 1px solid teal;
   box-sizing: border-box;
   padding: 10px;
-  width: 50%;
+  width: 100%;
 }
 .currPlayers {
   overflow: hidden;
@@ -60,16 +64,20 @@
   padding: 10px;
   font-size: 30px;
   font-family: 'Press Start 2P', cursive;
-  width: 50%;
+  width: 100%;
   text-align: center;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .gameSelector, .playerSelector {
   padding: 10px;
-  width: 50%;
+  width: 100%;
 }
 .gameSelect {
   border-radius: 0px;
+}
+.leftEntry, .rightEntry {
+  flex: 1;
+  padding: 5px;
 }
 .overHead {
   background-color: rgb(169, 255, 255);
@@ -87,12 +95,13 @@
   width: 100%;
 }
 .register {
-  padding: 10px;
-  box-sizing: border-box;
-  position: relative;
   border-width:20px;
   border-style:outset;
   border-color:#2eb9ce;
+  box-sizing: border-box;
+  display: flex;
+  padding: 10px;
+  position: relative;
 }
 select {
   border: 0;
@@ -102,7 +111,7 @@ select {
   -webkit-border-radius: 0;
 }
 .submit, .showStats {
-  width: 25%;
+  width: 50%;
   background-color: rgb(152, 212, 240);
   border-width:10px;
   border-style:outset;

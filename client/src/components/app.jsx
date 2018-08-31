@@ -10,6 +10,7 @@ class App extends React.Component {
       date: "",
       game: "",
       currPlayerToAdd: "",
+      currNewPlayer: "",
       players: [],
     };
     this.enterEntry = this.enterEntry.bind(this);
@@ -17,6 +18,8 @@ class App extends React.Component {
     this.getGame = this.getGame.bind(this);
     this.getName = this.getName.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
+    this.newPlayer = this.newPlayer.bind(this);
+    this.newPlayerAdd = this.newPlayerAdd.bind(this);
   }
 
   enterEntry() {
@@ -59,6 +62,21 @@ class App extends React.Component {
     }
   }
 
+  newPlayer(event) {
+    this.setState({
+      currNewPlayer: event.target.value,
+    });
+  }
+
+  newPlayerAdd() {
+    const { currNewPlayer, players } = this.state;
+    const newList = players;
+    newList.push(currNewPlayer);
+    this.setState({
+      players: newList,
+    });
+  }
+
   render() {
     const { displayStats, players } = this.state;
     if (displayStats) {
@@ -74,19 +92,29 @@ class App extends React.Component {
         <div>
           <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
           <div className="register" >
-            <div className="headBoard">New Entry</div>
-            <input className="dateSelect" onChange={ this.getDate } type="date" />
-            <GameSelect getGame={ this.getGame } />
-            <PlayerSelect className="playerSelector" addPlayer={ this.addPlayer } getName={ this.getName } />
-            <div className="currPlayers">
-              Current Players:
-              {players.map((el, i) => {
-                return <span className="names" key={ i }>{ el }</span>
-              }
-            )}
+            <div className="leftEntry">
+              <div className="headBoard">New Entry</div>
+              <input className="dateSelect" onChange={ this.getDate } type="date" />
+              <GameSelect getGame={ this.getGame } />
+              <PlayerSelect className="playerSelector" addPlayer={ this.addPlayer } getName={ this.getName } />
+              <div className="currPlayers">
+                Current Players:
+                {players.map((el, i) => {
+                  return <span className="names" key={ i }>{ el }</span>
+                }
+              )}
+              </div>
+              <button className="submit">Submit</button>
+              <button onClick={this.enterEntry} className="showStats">Cancel</button>
             </div>
-            <button className="submit">Submit</button>
-            <button onClick={this.enterEntry} className="showStats">Cancel</button>
+            <div className="rightEntry">
+              <div className="headBoard">New Games/Players</div>
+              <div className="newPlayer">
+                New Player:&nbsp;
+                <input onChange={this.newPlayer} className="addForm" type="text"></input>
+                <button onClick={this.newPlayerAdd} className="addPlayer">+</button>
+              </div>
+            </div>
           </div>
         </div>
       )
