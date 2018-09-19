@@ -13,6 +13,7 @@ const gameData = new Schema({
 const logData = mongoose.model('logData', gameData);
 const postData = (data) => {
   console.log(data);
+  
   //const log = new logData();
 }
 

@@ -12,5 +12,6 @@ app.listen('3000', () => {
 
 app.post('/log', (req, res) => {
   console.log(postData);
+  postData.postData();
   res.send('Recieved');
 });
