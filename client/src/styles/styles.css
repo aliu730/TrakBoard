@@ -2,7 +2,7 @@
   line-height: 23px;
 }
 
-.addPlayer {
+.addPlayer, .addGame {
   margin: 5px;
   padding: 4px;
   width: 30px;
@@ -46,7 +46,7 @@
   margin: 2px 2px 2px 2px;
   padding: 5px;
 }
-.currPlayers, .dateSelect, .gameSelector, .playerSelector, .submit, .showStats, .newPlayer {
+.currPlayers, .dateSelect, .gameSelector, .playerSelector, .submit, .showStats, .newPlayer, .newGame, .winner {
   background-color: rgb(228, 240, 250);
   border: 1px solid teal;
   box-sizing: border-box;

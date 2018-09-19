@@ -8,14 +8,18 @@ class GameSelect extends React.Component {
     };
   }
   render() {
+    const { games } = this.props;
     return (
       <div className="gameSelector">
       Select Game:&nbsp;
         <select onChange={this.props.getGame} className="gameSelect" defaultValue="notselected">
-          <option value="Monopoly">Monopoly</option>
-          <option value="Sorry">Sorry</option>
-          <option value="Life">Life</option>
-          <option value="notselected">Select Game</option>
+        <option value="notselected">Select Game</option>
+          { games.map((game, i) => (
+            <option value={ game } key={ i } >
+              { game }
+            </option>
+          )
+        )}
         </select>
       </div>
     )
