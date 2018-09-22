@@ -38,8 +38,10 @@ class App extends React.Component {
       date: "",
       game: "",
       players: [],
+      currNewPlayer: "",
       currPlayerToAdd: "",
       winner: "",
+      gameToAdd: "",
     });
   }
 
@@ -89,7 +91,7 @@ class App extends React.Component {
       this.setState({
         games: newGameList,
       });
-      alert('New Game Added to Game List');
+      alert(`${ gameToAdd } added to Game List`);
     }
   }
 
@@ -107,7 +109,7 @@ class App extends React.Component {
       this.setState({
         displayPlayers: newList,
       });
-      alert('Added to Select players list');
+      alert(`${ currNewPlayer } added to select players list`);
     }
   }
 
@@ -186,6 +188,9 @@ class App extends React.Component {
                 New Game:&nbsp;
                 <input  onChange={this.gameChangeAdd} className="addForm" type="text" ></input>
                 <button onClick={this.addGame} className="addGame" >+</button>
+              </div>
+              <div className="filler-div">
+                  Fill ME IN
               </div>
             </div>
           </div>

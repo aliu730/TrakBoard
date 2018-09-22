@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const postData = require('../database/db.js');
 
+
 app.use('/', express.static(path.join(__dirname, '../client/src')));
 app.use('/bundle', express.static(path.join(__dirname, '../public/trakBundle.js')));
 app.use('/styles', express.static(path.join(__dirname, '../styles')));

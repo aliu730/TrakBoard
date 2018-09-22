@@ -46,7 +46,7 @@
   margin: 2px 2px 2px 2px;
   padding: 5px;
 }
-.currPlayers, .dateSelect, .gameSelector, .playerSelector, .submit, .showStats, .newPlayer, .newGame, .winner {
+.currPlayers, .dateSelect, .gameSelector, .playerSelector, .submit, .showStats, .newPlayer, .newGame, .winner, .filler-div {
   background-color: rgb(228, 240, 250);
   border: 1px solid teal;
   box-sizing: border-box;
@@ -55,6 +55,9 @@
 }
 .currPlayers {
   overflow: hidden;
+}
+.filler-div {
+  height: 175px;
 }
 .headBoard {
   background-color: rgb(169, 255, 255);
@@ -96,8 +99,8 @@
 }
 .register {
   border-width:20px;
-  border-style:outset;
-  border-color:#2eb9ce;
+  border: solid 5px;
+  border-color:#78b8c2;
   box-sizing: border-box;
   display: flex;
   padding: 10px;
