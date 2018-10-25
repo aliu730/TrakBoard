@@ -134,8 +134,8 @@ class App extends React.Component {
     } = this.state;
     if (winner !== "" && date !== "" && game !== "") {
       axios.post('/log', this.state)
-      .then((response) => {
-        console.log('Saved Successfully');
+      .then(() => {
+        alert('Saved Successfully');
       });
     } else {
       alert(`Fill out fields first!`);
