@@ -18,6 +18,7 @@ class App extends React.Component {
       players: [],
       winner: "",
     };
+
     this.addGame = this.addGame.bind(this);
     this.enterEntry = this.enterEntry.bind(this);
     this.getDate = this.getDate.bind(this);
@@ -32,7 +33,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    
+    axios.get('/log')
+    .then((res) => {
+      let gameList = res.data.map((el) => el.game).filter((v,i,a) => a.indexOf(v) === i);
+      let playerList = res.data.map((el) => el.player).filter((v,i,a) => a.indexOf(v) === i);
+      this.setState({
+        displayPlayers: playerList,
+        games: gameList,
+      });
+    });
   }
   enterEntry() {
     const { displayStats } = this.state;
@@ -151,13 +160,17 @@ class App extends React.Component {
         </div>
       );
     } else if (!displayStats) {
+      let clock = new Date();
+      let day = clock.getDate();
+      let year = clock.getFullYear();
+      let month = clock.getMonth() + 1;
       return (
         <div>
           <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
           <div className="register" >
             <div className="leftEntry">
               <div className="headBoard">New Entry</div>
-              <input className="dateSelect" onChange={ this.getDate } type="date" />
+              <input className="dateSelect" onChange={ this.getDate } type="date" defaultValue={`${year}-${month}-${day}`}/>
               <GameSelect getGame={ this.getGame } games={ games } />
               <PlayerSelect className="playerSelector" addPlayer={ this.addPlayer } getName={ this.getName } displayPlayers={ displayPlayers } />
               <div className="currPlayers">
@@ -194,7 +207,7 @@ class App extends React.Component {
               <div className="newGame">
                 New Game:&nbsp;
                 <input  onChange={this.gameChangeAdd} className="addForm" type="text" ></input>
-                <button onClick={this.addGame} className="addGame" >+</button>
+                <button onClick={this.addGame} className="addGame">+</button>
               </div>
               <div className="filler-div">
                   Fill ME IN

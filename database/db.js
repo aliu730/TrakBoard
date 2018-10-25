@@ -12,8 +12,11 @@ const gameData = new Schema({
 });
 const logData = mongoose.model('logData', gameData);
 
-const grabData = () => {
-  
+const grabData = (cb) => {
+  logData.find((err, data) => {
+    if (err) throw err;
+    cb(data);
+  });
 }
 
 const postData = (data) => {
@@ -35,5 +38,6 @@ const postData = (data) => {
 
 module.exports = {
   postData,
+  grabData,
 };
 

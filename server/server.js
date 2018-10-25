@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const postData = require('../database/db.js');
+const db = require('../database/db.js');
 app.use(express.json())
 
 app.use('/', express.static(path.join(__dirname, '../client/src')));
@@ -11,7 +11,13 @@ app.listen('3000', () => {
   console.log("Listening to 3000");
 });
 
+app.get('/log', (req, res) => { 
+  db.grabData((data) => {
+    res.send(data);
+  });
+});
+
 app.post('/log', (req, res) => {
-  postData.postData(req.body);
+  db.postData(req.body);
   res.send('Recieved');
 });
