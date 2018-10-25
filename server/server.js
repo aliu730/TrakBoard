@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const postData = require('../database/db.js');
-
+app.use(express.json())
 
 app.use('/', express.static(path.join(__dirname, '../client/src')));
 app.use('/bundle', express.static(path.join(__dirname, '../public/trakBundle.js')));
@@ -12,7 +12,6 @@ app.listen('3000', () => {
 });
 
 app.post('/log', (req, res) => {
-  console.log(postData);
-  postData.postData();
+  postData.postData(req.body);
   res.send('Recieved');
 });

@@ -31,6 +31,9 @@ class App extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
+  componentDidMount() {
+    
+  }
   enterEntry() {
     const { displayStats } = this.state;
     this.setState({
@@ -120,10 +123,14 @@ class App extends React.Component {
       date,
       winner,
     } = this.state;
-    axios.post('/log', this.state)
-    .then((response) => {
-      console.log('Saved Successfully');
-    })
+    if (winner !== "" && date !== "" && game !== "") {
+      axios.post('/log', this.state)
+      .then((response) => {
+        console.log('Saved Successfully');
+      });
+    } else {
+      alert(`Fill out fields first!`);
+    }
   }
 
   render() {
