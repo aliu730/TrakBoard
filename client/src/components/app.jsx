@@ -1,7 +1,9 @@
 const React = require('react');
 const axios = require('axios');
+import FrontPage from './frontpage.jsx';
 import GameSelect from './gameSelect.jsx';
 import PlayerSelect from './playerSelect.jsx';
+
 
 class App extends React.Component {
   constructor (props) {
@@ -9,7 +11,7 @@ class App extends React.Component {
     this.state = {
       currPlayerToAdd: "",
       currNewPlayer: "",
-      displayPlayers: ['Andrew Liu', 'Sandro Yu', 'Eric Chung', 'Lam Hoang', 'yticixoT', 'player1'],
+      displayPlayers: [],
       displayStats: true,
       date: "",
       game: "",
@@ -154,9 +156,7 @@ class App extends React.Component {
     if (displayStats) {
       return (
         <div>
-          <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
-          <div className="overHead" >TrakBoard</div>
-          <button onClick={this.enterEntry} className="addSess">Add Entry</button>
+          <FrontPage enterEntry={this.enterEntry} />
         </div>
       );
     } else if (!displayStats) {
@@ -210,7 +210,7 @@ class App extends React.Component {
                 <button onClick={this.addGame} className="addGame">+</button>
               </div>
               <div className="filler-div">
-                  Fill ME IN
+                  
               </div>
             </div>
           </div>

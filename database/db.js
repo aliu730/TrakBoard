@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/trakBoard');
+mongoose.connect('mongodb://localhost:27017/trakBoard', { useNewUrlParser: true });
 
 const Schema = mongoose.Schema;
 
