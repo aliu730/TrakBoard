@@ -1,5 +1,6 @@
 const React = require('react');
 const axios = require('axios');
+import DataEntry from './dataEntry.jsx';
 import FrontPage from './frontpage.jsx';
 import GameSelect from './gameSelect.jsx';
 import PlayerSelect from './playerSelect.jsx';
