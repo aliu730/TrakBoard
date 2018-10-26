@@ -15,7 +15,7 @@ const DataEntry = (props) => {
           <div className="headBoard">New Entry</div>
           <input className="dateSelect" onChange={ props.getDate } type="date" defaultValue={`${year}-${month}-${day}`}/>
           <GameSelect getGame={ props.getGame } games={ props.games } />
-          <PlayerSelect className="playerSelector" addPlayer={ this.addPlayer } getName={ this.getName } displayPlayers={ displayPlayers } />
+          <PlayerSelect className="playerSelector" addPlayer={ props.addPlayer } getName={ props.getName } displayPlayers={ props.displayPlayers } />
           <div className="currPlayers">
             Current Players:
             {players.map((el, i) => {

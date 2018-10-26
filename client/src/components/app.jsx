@@ -5,7 +5,6 @@ import FrontPage from './frontpage.jsx';
 import GameSelect from './gameSelect.jsx';
 import PlayerSelect from './playerSelect.jsx';
 
-
 class App extends React.Component {
   constructor (props) {
     super(props);
@@ -168,7 +167,7 @@ class App extends React.Component {
       let month = clock.getMonth() + 1;
       return (
         <div>
-          <DataEntry getDate={this.getDate} getGame={this.getGame} games={games} />
+          <DataEntry getDate={this.getDate} getGame={this.getGame} games={games} addPlayer={this.addPlayer} displayPlayers={displayPlayers} players={players} />
           <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
           <div className="register" >
             <div className="leftEntry">
@@ -213,7 +212,6 @@ class App extends React.Component {
                 <button onClick={this.addGame} className="addGame">+</button>
               </div>
               <div className="filler-div">
-                  
               </div>
             </div>
           </div>
