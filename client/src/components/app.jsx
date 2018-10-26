@@ -161,12 +161,14 @@ class App extends React.Component {
         </div>
       );
     } else if (!displayStats) {
+      // this.getDate, this.getName, this.addPlayer
       let clock = new Date();
       let day = clock.getDate();
       let year = clock.getFullYear();
       let month = clock.getMonth() + 1;
       return (
         <div>
+          <DataEntry getDate={this.getDate} getGame={this.getGame} games={games} />
           <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
           <div className="register" >
             <div className="leftEntry">
