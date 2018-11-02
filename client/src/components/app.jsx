@@ -33,7 +33,27 @@ class App extends React.Component {
     this.newPlayerAdd = this.newPlayerAdd.bind(this);
     this.submit = this.submit.bind(this);
   }
-
+  addPlayer() {
+    const { players, currPlayerToAdd } = this.state;
+    const newPlayerList = players;
+    if (!players.includes(currPlayerToAdd) && currPlayerToAdd !== "" && currPlayerToAdd !== "notselected") {
+      newPlayerList.push(currPlayerToAdd);
+      this.setState({
+        players: newPlayerList,
+      });
+    }
+  }
+  addGame() {
+    const { gameToAdd, games } = this.state;
+    const newGameList = games;
+    if (!newGameList.includes(gameToAdd)) {
+      newGameList.push(gameToAdd);
+      this.setState({
+        games: newGameList,
+      });
+      alert(`${ gameToAdd } added to Game List`);
+    }
+  }
   componentDidMount() {
     axios.get('/log')
     .then((res) => {
@@ -87,27 +107,6 @@ class App extends React.Component {
       winner: event.target.value,
     });
   }
-  addPlayer() {
-    const { players, currPlayerToAdd } = this.state;
-    const newPlayerList = players;
-    if (!players.includes(currPlayerToAdd) && currPlayerToAdd !== "" && currPlayerToAdd !== "notselected") {
-      newPlayerList.push(currPlayerToAdd);
-      this.setState({
-        players: newPlayerList,
-      });
-    }
-  }
-  addGame() {
-    const { gameToAdd, games } = this.state;
-    const newGameList = games;
-    if (!newGameList.includes(gameToAdd)) {
-      newGameList.push(gameToAdd);
-      this.setState({
-        games: newGameList,
-      });
-      alert(`${ gameToAdd } added to Game List`);
-    }
-  }
 
   newPlayer(event) {
     this.setState({
@@ -160,61 +159,22 @@ class App extends React.Component {
         </div>
       );
     } else if (!displayStats) {
-      // this.getDate, this.getName, this.addPlayer
-      let clock = new Date();
-      let day = clock.getDate();
-      let year = clock.getFullYear();
-      let month = clock.getMonth() + 1;
       return (
         <div>
-          <DataEntry getDate={this.getDate} getGame={this.getGame} games={games} addPlayer={this.addPlayer} displayPlayers={displayPlayers} players={players} />
-          <img className="background" src="gameBackground.jpg" width="100%" height="100%"></img>
-          <div className="register" >
-            <div className="leftEntry">
-              <div className="headBoard">New Entry</div>
-              <input className="dateSelect" onChange={ this.getDate } type="date" defaultValue={`${year}-${month}-${day}`}/>
-              <GameSelect getGame={ this.getGame } games={ games } />
-              <PlayerSelect className="playerSelector" addPlayer={ this.addPlayer } getName={ this.getName } displayPlayers={ displayPlayers } />
-              <div className="currPlayers">
-                Current Players:
-                {players.map((el, i) => {
-                  return <span className="names" key={ i }>{ el }</span>
-                }
-              )}
-              </div>
-              <div className="winner">
-                Winner:&nbsp;
-                <select onChange={this.getWinner} className="winnerSelect" defaultValue="selectWinner" >
-                  <option value="selectWinner">
-                    Pick a Winner
-                  </option>
-                  {players.map((player, i) => (
-                    <option value={player} key={ i } >
-                      { player }
-                    </option>
-                  )
-                )}
-                </select>
-              </div>
-              <button onClick={this.submit} className="submit">Submit</button>
-              <button onClick={this.enterEntry} className="showStats">Cancel</button>
-            </div>
-            <div className="rightEntry">
-              <div className="headBoard">New Players/Games</div>
-              <div className="newPlayer">
-                New Player:&nbsp;
-                <input onChange={this.newPlayer} className="addForm" type="text"></input>
-                <button onClick={this.newPlayerAdd} className="addPlayer">+</button>
-              </div>
-              <div className="newGame">
-                New Game:&nbsp;
-                <input  onChange={this.gameChangeAdd} className="addForm" type="text" ></input>
-                <button onClick={this.addGame} className="addGame">+</button>
-              </div>
-              <div className="filler-div">
-              </div>
-            </div>
-          </div>
+          <DataEntry 
+            addGame={this.addGame}
+            addPlayer={this.addPlayer} 
+            displayPlayers={displayPlayers} 
+            enterEntry={this.enterEntry}
+            gameChangeAdd={this.gameChangeAdd}
+            getDate={this.getDate} 
+            getGame={this.getGame} 
+            games={games} 
+            newPlayer={this.newPlayer}
+            newPlayerAdd={this.newPlayerAdd}
+            players={players}
+            submit={this.submit}
+          />
         </div>
       )
     }

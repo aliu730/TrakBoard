@@ -18,13 +18,30 @@ const DataEntry = (props) => {
           <PlayerSelect className="playerSelector" addPlayer={ props.addPlayer } getName={ props.getName } displayPlayers={ props.displayPlayers } />
           <div className="currPlayers">
             Current Players:
-            {players.map((el, i) => {
+            {props.players.map((el, i) => {
               return <span className="names" key={ i }>{ el }</span>
             }
           )}
           </div>
+          <button onClick={props.submit} className="submit">Submit</button>
+          <button onClick={props.enterEntry} className="showStats">Cancel</button>
+        </div>
+        <div className="rightEntry">
+          <div className="headBoard">New Players/Games</div>
+          <div className="newPlayer">
+            New Player:&nbsp;
+            <input onChange={props.newPlayer} className="addForm" type="text"></input>
+            <button onClick={props.newPlayerAdd} className="addPlayer">+</button>
+          </div>
+          <div className="newGame">
+            New Game:&nbsp;
+            <input  onChange={props.gameChangeAdd} className="addForm" type="text" ></input>
+            <button onClick={props.addGame} className="addGame">+</button>
+          </div>
+          <div className="filler-div">
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   )
 };
