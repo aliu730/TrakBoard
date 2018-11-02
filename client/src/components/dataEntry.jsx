@@ -15,13 +15,27 @@ const DataEntry = (props) => {
           <div className="headBoard">New Entry</div>
           <input className="dateSelect" onChange={ props.getDate } type="date" defaultValue={`${year}-${month}-${day}`}/>
           <GameSelect getGame={ props.getGame } games={ props.games } />
-          <PlayerSelect className="playerSelector" addPlayer={ props.addPlayer } getName={ props.getName } displayPlayers={ props.displayPlayers } />
+          <PlayerSelect className="playerSelector" addPlayer={ props.addPlayer } currPlayerToAdd={ props.currPlayerToAdd } getName={ props.getName } displayPlayers={ props.displayPlayers } />
           <div className="currPlayers">
             Current Players:
             {props.players.map((el, i) => {
               return <span className="names" key={ i }>{ el }</span>
             }
           )}
+          </div>
+          <div className="winner">
+            Winner:&nbsp;
+            <select onChange={props.getWinner} className="winnerSelect" defaultValue="selectWinner" >
+              <option value="selectWinner">
+                Pick a Winner
+              </option>
+              {props.players.map((player, i) => (
+                <option value={player} key={ i } >
+                  { player }
+                </option>
+              )
+            )}
+            </select>
           </div>
           <button onClick={props.submit} className="submit">Submit</button>
           <button onClick={props.enterEntry} className="showStats">Cancel</button>

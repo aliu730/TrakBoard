@@ -2,8 +2,6 @@ const React = require('react');
 const axios = require('axios');
 import DataEntry from './dataEntry.jsx';
 import FrontPage from './frontpage.jsx';
-import GameSelect from './gameSelect.jsx';
-import PlayerSelect from './playerSelect.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -164,11 +162,14 @@ class App extends React.Component {
           <DataEntry 
             addGame={this.addGame}
             addPlayer={this.addPlayer} 
+            currPlayerToAdd={this.currPlayerToAdd}
             displayPlayers={displayPlayers} 
             enterEntry={this.enterEntry}
             gameChangeAdd={this.gameChangeAdd}
             getDate={this.getDate} 
+            getName={this.getName}
             getGame={this.getGame} 
+            getWinner={this.getWinner}
             games={games} 
             newPlayer={this.newPlayer}
             newPlayerAdd={this.newPlayerAdd}
