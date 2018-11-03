@@ -3,6 +3,7 @@ const axios = require('axios');
 
 import DataEntry from './dataEntry.jsx';
 import FrontPage from './frontpage.jsx';
+import Statistics from './statistics.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -180,6 +181,7 @@ class App extends React.Component {
           players={players}
           submit={this.submit}
         />
+        <Statistics />
       </div>
     );
   }

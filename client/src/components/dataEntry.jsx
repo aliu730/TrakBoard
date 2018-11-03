@@ -30,7 +30,6 @@ const DataEntry = (props) => {
   };
   return (
     <div>
-      <img className="background" src="gameBackground.jpg" width="100%" height="100%" alt="Rendering" />
       <div className="register">
         <div className="leftEntry">
           <div className="headBoard">New Entry</div>
