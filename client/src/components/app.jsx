@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       currPlayerToAdd: '',
       currNewPlayer: '',
+      chartData: '',
       displayPlayers: [],
       displayStats: true,
       date: '',
@@ -42,6 +43,7 @@ class App extends React.Component {
         this.setState({
           displayPlayers: playerList,
           games: gameList,
+          chartData: res.data,
         });
       });
   }
@@ -153,8 +155,8 @@ class App extends React.Component {
       players,
       displayPlayers,
       games,
+      chartData,
     } = this.state;
-
     if (displayStats) {
       return (
         <div>
@@ -181,7 +183,7 @@ class App extends React.Component {
           players={players}
           submit={this.submit}
         />
-        <Statistics />
+        <Statistics chartData={chartData} />
       </div>
     );
   }

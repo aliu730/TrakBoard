@@ -37,6 +37,18 @@ body {
   min-width: 1440px;
   min-height: 980px;
 }
+.chart {
+  flex: 1;
+  min-height: 100px;
+  width: 400px;
+  padding: 15px;
+  background-color: pink;
+}
+.chartContain {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
 .names {
   background-color: white;
   border: solid 1px lightblue;
