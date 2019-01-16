@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const db = require('../database/db.js');
-app.use(express.json())
+app.use(express.json());
 
 app.use('/', express.static(path.join(__dirname, '../client/src')));
 app.use('/bundle', express.static(path.join(__dirname, '../public/trakBundle.js')));

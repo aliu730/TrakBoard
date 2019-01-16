@@ -160,7 +160,7 @@ class App extends React.Component {
     if (displayStats) {
       return (
         <div>
-          <FrontPage enterEntry={this.enterEntry} />
+          <FrontPage enterEntry = {this.enterEntry} />
         </div>
       );
     }
