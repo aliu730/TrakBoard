@@ -160,31 +160,37 @@ class App extends React.Component {
     if (displayStats) {
       return (
         <div>
-          <FrontPage enterEntry = {this.enterEntry} />
+          <FrontPage enterEntry={this.enterEntry} />
         </div>
       );
     }
     return (
-      <div>
-        <DataEntry
-          addGame={this.addGame}
-          addPlayer={this.addPlayer}
-          currPlayerToAdd={this.currPlayerToAdd}
-          displayPlayers={displayPlayers}
-          enterEntry={this.enterEntry}
-          gameChangeAdd={this.gameChangeAdd}
-          getDate={this.getDate}
-          getName={this.getName}
-          getGame={this.getGame}
-          getWinner={this.getWinner}
-          games={games}
-          newPlayer={this.newPlayer}
-          newPlayerAdd={this.newPlayerAdd}
-          players={players}
-          submit={this.submit}
-        />
-        <Statistics chartData={chartData} />
-      </div>
+      <div className="layout">
+        <div className="spacer1">
+        </div>
+        <div className="dataEntry">
+          <DataEntry
+            addGame={this.addGame}
+            addPlayer={this.addPlayer}
+            currPlayerToAdd={this.currPlayerToAdd}
+            displayPlayers={displayPlayers}
+            enterEntry={this.enterEntry}
+            gameChangeAdd={this.gameChangeAdd}
+            getDate={this.getDate}
+            getName={this.getName}
+            getGame={this.getGame}
+            getWinner={this.getWinner}
+            games={games}
+            newPlayer={this.newPlayer}
+            newPlayerAdd={this.newPlayerAdd}
+            players={players}
+            submit={this.submit}
+          />
+          <Statistics chartData={chartData} displayPlayers={displayPlayers} />
+        </div>
+        <div className="spacer2">
+        </div>
+      </div>   
     );
   }
 }
