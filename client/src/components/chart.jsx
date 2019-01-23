@@ -12,8 +12,11 @@ const Chart = (props) => {
           {chartEntry.name}
         </div>
         {gameNames.map((game) => {
+            let won = chartEntry[game].won;
+            let loss = chartEntry[game].loss;
+            let winRate = (won / (won + loss)) * 100;
             if (game !== 'name') {
-              return <div>{game}: Won: {chartEntry[game].won} Loss: {chartEntry[game].loss} </div>
+              return <div>{game}: Won: {won} Loss: {loss} WinRate: {winRate}%</div>
             }
           }
         )}
